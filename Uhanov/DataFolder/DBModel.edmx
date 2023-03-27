@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastNameClient" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="FirstNameClient" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MiddleNameClient" Type="nvarchar" MaxLength="30" />
+          <Property Name="NameCompany" Type="nvarchar" MaxLength="30" />
+          <Property Name="PhoneNumberClient" Type="nvarchar" MaxLength="17" Nullable="false" />
+          <Property Name="EmailClient" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="IdEmployee" />
+          </Key>
+          <Property Name="IdEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastNameEmployee" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="FirstNameEmployee" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MiddleNameEmployee" Type="nvarchar" MaxLength="30" />
+          <Property Name="PhoneNumberEmployee" Type="nvarchar" MaxLength="17" Nullable="false" />
+          <Property Name="EmailEmployee" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdPost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPosition" Type="int" Nullable="false" />
+          <Property Name="CountExemplar" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IdEmployee" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="IdStatusOrder" Type="int" Nullable="false" />
+          <Property Name="IdStatusPayment" Type="int" Nullable="false" />
+          <Property Name="DateOfIssueOrder" Type="date" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="IdPost" />
+          </Key>
+          <Property Name="IdPost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePost" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PriceList">
+          <Key>
+            <PropertyRef Name="IdPosition" />
+          </Key>
+          <Property Name="IdPosition" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePosition" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusOrder">
+          <Key>
+            <PropertyRef Name="IdStatusOrder" />
+          </Key>
+          <Property Name="IdStatusOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStatusOrder" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusPayment">
+          <Key>
+            <PropertyRef Name="IdStatusPayment" />
+          </Key>
+          <Property Name="IdStatusPayment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStatusPayment" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginUser" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PasswordUser" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Client_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="IdOrder" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="IdPost" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="IdEmployee" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_PriceList">
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceList">
+              <PropertyRef Name="IdPosition" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_StatusOrder">
+          <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOrder">
+              <PropertyRef Name="IdStatusOrder" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdStatusOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_StatusPayment">
+          <End Role="StatusPayment" Type="Self.StatusPayment" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusPayment">
+              <PropertyRef Name="IdStatusPayment" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdStatusPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DBModelContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriceList" EntityType="Self.PriceList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusPayment" EntityType="Self.StatusPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Client_Order" Association="Self.FK_Client_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Post" Association="Self.FK_Employee_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_PriceList" Association="Self.FK_Order_PriceList">
+            <End Role="PriceList" EntitySet="PriceList" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_StatusOrder" Association="Self.FK_Order_StatusOrder">
+            <End Role="StatusOrder" EntitySet="StatusOrder" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_StatusPayment" Association="Self.FK_Order_StatusPayment">
+            <End Role="StatusPayment" EntitySet="StatusPayment" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastNameClient" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstNameClient" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleNameClient" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NameCompany" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberClient" Type="String" MaxLength="17" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailClient" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdOrder" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Client_Order" FromRole="Client" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="IdEmployee" />
+          </Key>
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastNameEmployee" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstNameEmployee" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleNameEmployee" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberEmployee" Type="String" MaxLength="17" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailEmployee" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdPost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Employee_Post" FromRole="Employee" ToRole="Post" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPosition" Type="Int32" Nullable="false" />
+          <Property Name="CountExemplar" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdStatusOrder" Type="Int32" Nullable="false" />
+          <Property Name="IdStatusPayment" Type="Int32" Nullable="false" />
+          <Property Name="DateOfIssueOrder" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Order" FromRole="Order" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_Order_PriceList" FromRole="Order" ToRole="PriceList" />
+          <NavigationProperty Name="StatusOrder" Relationship="Self.FK_Order_StatusOrder" FromRole="Order" ToRole="StatusOrder" />
+          <NavigationProperty Name="StatusPayment" Relationship="Self.FK_Order_StatusPayment" FromRole="Order" ToRole="StatusPayment" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="IdPost" />
+          </Key>
+          <Property Name="IdPost" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePost" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Post" FromRole="Post" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="PriceList">
+          <Key>
+            <PropertyRef Name="IdPosition" />
+          </Key>
+          <Property Name="IdPosition" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePosition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_PriceList" FromRole="PriceList" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="StatusOrder">
+          <Key>
+            <PropertyRef Name="IdStatusOrder" />
+          </Key>
+          <Property Name="IdStatusOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStatusOrder" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_StatusOrder" FromRole="StatusOrder" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="StatusPayment">
+          <Key>
+            <PropertyRef Name="IdStatusPayment" />
+          </Key>
+          <Property Name="IdStatusPayment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStatusPayment" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_StatusPayment" FromRole="StatusPayment" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginUser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordUser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Client_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="IdOrder" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="IdPost" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="IdEmployee" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_PriceList">
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceList">
+              <PropertyRef Name="IdPosition" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_StatusOrder">
+          <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOrder">
+              <PropertyRef Name="IdStatusOrder" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdStatusOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_StatusPayment">
+          <End Role="StatusPayment" Type="Self.StatusPayment" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusPayment">
+              <PropertyRef Name="IdStatusPayment" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdStatusPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="PriceList" EntityType="Self.PriceList" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" />
+          <EntitySet Name="StatusPayment" EntityType="Self.StatusPayment" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Client_Order" Association="Self.FK_Client_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Post" Association="Self.FK_Employee_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_PriceList" Association="Self.FK_Order_PriceList">
+            <End Role="PriceList" EntitySet="PriceList" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_StatusOrder" Association="Self.FK_Order_StatusOrder">
+            <End Role="StatusOrder" EntitySet="StatusOrder" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_StatusPayment" Association="Self.FK_Order_StatusPayment">
+            <End Role="StatusPayment" EntitySet="StatusPayment" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DBModelContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="DBModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="LastNameClient" ColumnName="LastNameClient" />
+                <ScalarProperty Name="FirstNameClient" ColumnName="FirstNameClient" />
+                <ScalarProperty Name="MiddleNameClient" ColumnName="MiddleNameClient" />
+                <ScalarProperty Name="NameCompany" ColumnName="NameCompany" />
+                <ScalarProperty Name="PhoneNumberClient" ColumnName="PhoneNumberClient" />
+                <ScalarProperty Name="EmailClient" ColumnName="EmailClient" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="DBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="LastNameEmployee" ColumnName="LastNameEmployee" />
+                <ScalarProperty Name="FirstNameEmployee" ColumnName="FirstNameEmployee" />
+                <ScalarProperty Name="MiddleNameEmployee" ColumnName="MiddleNameEmployee" />
+                <ScalarProperty Name="PhoneNumberEmployee" ColumnName="PhoneNumberEmployee" />
+                <ScalarProperty Name="EmailEmployee" ColumnName="EmailEmployee" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="DBModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="IdPosition" ColumnName="IdPosition" />
+                <ScalarProperty Name="CountExemplar" ColumnName="CountExemplar" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="IdStatusOrder" ColumnName="IdStatusOrder" />
+                <ScalarProperty Name="IdStatusPayment" ColumnName="IdStatusPayment" />
+                <ScalarProperty Name="DateOfIssueOrder" ColumnName="DateOfIssueOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="DBModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="NamePost" ColumnName="NamePost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceList">
+            <EntityTypeMapping TypeName="DBModel.PriceList">
+              <MappingFragment StoreEntitySet="PriceList">
+                <ScalarProperty Name="IdPosition" ColumnName="IdPosition" />
+                <ScalarProperty Name="NamePosition" ColumnName="NamePosition" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="DBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusOrder">
+            <EntityTypeMapping TypeName="DBModel.StatusOrder">
+              <MappingFragment StoreEntitySet="StatusOrder">
+                <ScalarProperty Name="IdStatusOrder" ColumnName="IdStatusOrder" />
+                <ScalarProperty Name="NameStatusOrder" ColumnName="NameStatusOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusPayment">
+            <EntityTypeMapping TypeName="DBModel.StatusPayment">
+              <MappingFragment StoreEntitySet="StatusPayment">
+                <ScalarProperty Name="IdStatusPayment" ColumnName="IdStatusPayment" />
+                <ScalarProperty Name="NameStatusPayment" ColumnName="NameStatusPayment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="LoginUser" ColumnName="LoginUser" />
+                <ScalarProperty Name="PasswordUser" ColumnName="PasswordUser" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
