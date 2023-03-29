@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a421f3671edf4198ba4cdc70598732cf" Name="Diagram1">
-        <EntityTypeShape EntityType="DBModel.Client" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Employee" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+      <Diagram DiagramId="15b06e01a5364ce5b118b7703e8171e0" Name="Diagram1">
+        <EntityTypeShape EntityType="DBModel.Client" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Employee" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Order" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Post" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.PriceList" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.PriceList" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.Role" Width="1.5" PointX="5.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.StatusOrder" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.StatusPayment" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.StatusOrder" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.StatusPayment" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.User" Width="1.5" PointX="8" PointY="5.875" IsExpanded="true" />
-        <AssociationConnector Association="DBModel.FK_Client_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Order_Client" ManuallyRouted="false" />
         <AssociationConnector Association="DBModel.FK_Employee_Post" ManuallyRouted="false" />
         <AssociationConnector Association="DBModel.FK_Order_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="DBModel.FK_Order_PriceList" ManuallyRouted="false" />

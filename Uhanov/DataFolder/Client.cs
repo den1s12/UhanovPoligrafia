@@ -14,6 +14,12 @@ namespace Uhanov.DataFolder
     
     public partial class Client
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Client()
+        {
+            this.Order = new HashSet<Order>();
+        }
+    
         public int IdClient { get; set; }
         public string LastNameClient { get; set; }
         public string FirstNameClient { get; set; }
@@ -21,8 +27,8 @@ namespace Uhanov.DataFolder
         public string NameCompany { get; set; }
         public string PhoneNumberClient { get; set; }
         public string EmailClient { get; set; }
-        public Nullable<int> IdOrder { get; set; }
     
-        public virtual Order Order { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

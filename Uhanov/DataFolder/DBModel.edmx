@@ -16,7 +16,6 @@
           <Property Name="NameCompany" Type="nvarchar" MaxLength="30" />
           <Property Name="PhoneNumberClient" Type="nvarchar" MaxLength="17" Nullable="false" />
           <Property Name="EmailClient" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="IdOrder" Type="int" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -43,6 +42,7 @@
           <Property Name="IdStatusOrder" Type="int" Nullable="false" />
           <Property Name="IdStatusPayment" Type="int" Nullable="false" />
           <Property Name="DateOfIssueOrder" Type="date" />
+          <Property Name="IdClient" Type="int" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -100,18 +100,6 @@
           <Property Name="PasswordUser" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="IdRole" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Client_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
-          <End Role="Client" Type="Self.Client" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="IdOrder" />
-            </Principal>
-            <Dependent Role="Client">
-              <PropertyRef Name="IdOrder" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Employee_Post">
           <End Role="Post" Type="Self.Post" Multiplicity="1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -121,6 +109,18 @@
             </Principal>
             <Dependent Role="Employee">
               <PropertyRef Name="IdPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -195,13 +195,13 @@
           <EntitySet Name="StatusPayment" EntityType="Self.StatusPayment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Client_Order" Association="Self.FK_Client_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="Client" EntitySet="Client" />
-          </AssociationSet>
           <AssociationSet Name="FK_Employee_Post" Association="Self.FK_Employee_Post">
             <End Role="Post" EntitySet="Post" />
             <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
             <End Role="Employee" EntitySet="Employee" />
@@ -240,8 +240,7 @@
           <Property Name="NameCompany" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumberClient" Type="String" MaxLength="17" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmailClient" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdOrder" Type="Int32" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Client_Order" FromRole="Client" ToRole="Order" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Client" FromRole="Client" ToRole="Order" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -270,7 +269,8 @@
           <Property Name="IdStatusOrder" Type="Int32" Nullable="false" />
           <Property Name="IdStatusPayment" Type="Int32" Nullable="false" />
           <Property Name="DateOfIssueOrder" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Order" FromRole="Order" ToRole="Client" />
+          <Property Name="IdClient" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Order_Client" FromRole="Order" ToRole="Client" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
           <NavigationProperty Name="PriceList" Relationship="Self.FK_Order_PriceList" FromRole="Order" ToRole="PriceList" />
           <NavigationProperty Name="StatusOrder" Relationship="Self.FK_Order_StatusOrder" FromRole="Order" ToRole="StatusOrder" />
@@ -338,15 +338,15 @@
           <Property Name="IdRole" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
-        <Association Name="FK_Client_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
-          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+        <Association Name="FK_Order_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="IdOrder" />
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
             </Principal>
-            <Dependent Role="Client">
-              <PropertyRef Name="IdOrder" />
+            <Dependent Role="Order">
+              <PropertyRef Name="IdClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -433,9 +433,9 @@
           <EntitySet Name="StatusPayment" EntityType="Self.StatusPayment" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK_Client_Order" Association="Self.FK_Client_Order">
-            <End Role="Order" EntitySet="Order" />
+          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
             <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Employee_Post" Association="Self.FK_Employee_Post">
             <End Role="Post" EntitySet="Post" />
@@ -478,7 +478,6 @@
                 <ScalarProperty Name="NameCompany" ColumnName="NameCompany" />
                 <ScalarProperty Name="PhoneNumberClient" ColumnName="PhoneNumberClient" />
                 <ScalarProperty Name="EmailClient" ColumnName="EmailClient" />
-                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -507,6 +506,7 @@
                 <ScalarProperty Name="IdStatusOrder" ColumnName="IdStatusOrder" />
                 <ScalarProperty Name="IdStatusPayment" ColumnName="IdStatusPayment" />
                 <ScalarProperty Name="DateOfIssueOrder" ColumnName="DateOfIssueOrder" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

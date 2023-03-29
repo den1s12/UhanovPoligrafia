@@ -14,12 +14,6 @@ namespace Uhanov.DataFolder
     
     public partial class Order
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
-        {
-            this.Client = new HashSet<Client>();
-        }
-    
         public int IdOrder { get; set; }
         public int IdPosition { get; set; }
         public int CountExemplar { get; set; }
@@ -29,9 +23,9 @@ namespace Uhanov.DataFolder
         public int IdStatusOrder { get; set; }
         public int IdStatusPayment { get; set; }
         public Nullable<System.DateTime> DateOfIssueOrder { get; set; }
+        public Nullable<int> IdClient { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Client> Client { get; set; }
+        public virtual Client Client { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual PriceList PriceList { get; set; }
         public virtual StatusOrder StatusOrder { get; set; }

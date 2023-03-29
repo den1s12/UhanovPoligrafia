@@ -39,7 +39,7 @@ namespace Uhanov.WindowFolder.AdminFolder
 
         private void ListUserBtn_Click(object sender, RoutedEventArgs e)
         {
-            AdminFrame.Navigate(new EditUserPage());
+            AdminFrame.Navigate(new UserListPage());
         }
     }
 }

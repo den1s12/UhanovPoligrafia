@@ -65,40 +65,40 @@ namespace Uhanov.PageFolder.ManagerPageFolder
 
         private void EditM_Click(object sender, RoutedEventArgs e)
         {
-            if (ListOrderDG.SelectedItem == null)
-            {
-                MBClass.ErrorMB("Выберите " +
-                    "пользователя для редактирования");
-            }
+            //if (ListOrderDG.SelectedItem == null)
+            //{
+            //    MBClass.ErrorMB("Выберите " +
+            //        "пользователя для редактирования");
+            //}
 
-            Order order = ListOrderDG.SelectedItem as Order;
-            VariableClass.OrderId = order.IdOrder;
-            NavigationService.Navigate(new EditOrderPage(order));
+            //Order order = ListOrderDG.SelectedItem as Order;
+            //VariableClass.OrderId = order.IdOrder;
+            //NavigationService.Navigate(new EditOrderPage(order));
         }
 
         private void DeleteM_Click(object sender, RoutedEventArgs e)
         {
-            Order order = ListOrderDG.SelectedItem as Order;
+            //Order order = ListOrderDG.SelectedItem as Order;
 
-            if (ListOrderDG.SelectedItem == null)
-            {
-                MBClass.ErrorMB("Выберите заказ" +
-                    "для удаления");
-            }
-            else
-            {
-                if (MBClass.QuestionMB("Удалить" +
-                    $"заказ с номером" +
-                    $"{order.IdOrder}?"))
-                {
-                    DBEntities.GetContext().User.Remove(order);
-                    DBEntities.GetContext().SaveChanges();
+            //if (ListOrderDG.SelectedItem == null)
+            //{
+            //    MBClass.ErrorMB("Выберите заказ" +
+            //        "для удаления");
+            //}
+            //else
+            //{
+            //    if (MBClass.QuestionMB("Удалить" +
+            //        $"заказ с номером" +
+            //        $"{order.IdOrder}?"))
+            //    {
+            //        DBEntities.GetContext().User.Remove(order);
+            //        DBEntities.GetContext().SaveChanges();
 
-                    MessageBox.Show("Пользователь удален");
-                    ListOrderDG.ItemsSource = DBEntities.GetContext()
-                        .Order.ToList().OrderBy(u => u.IdOrder);
-                }
-            }
+            //        MessageBox.Show("Пользователь удален");
+            //        ListOrderDG.ItemsSource = DBEntities.GetContext()
+            //            .Order.ToList().OrderBy(u => u.IdOrder);
+            //    }
+            //}
         }
     }
 }
