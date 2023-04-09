@@ -54,7 +54,7 @@
                 Style="{DynamicResource menuButton2}">
             
             <StackPanel Orientation="Horizontal" Width="201" Height="37">
-                <TextBlock Text="Добавить пользователя" Style="{DynamicResource NormalText}" Height="23" Width="199"/>
+                <TextBlock Text="Добавить пользователя" Style="{DynamicResource NormalText2}" Height="23" Width="199"/>
             </StackPanel>
         </Button>
         <Button x:Name="BackBtn"
@@ -63,7 +63,7 @@
                 Grid.Column="1" Grid.Row="7"
                 Style="{DynamicResource menuButton2}">
             <StackPanel Orientation="Horizontal" Width="60" Height="37">
-                <TextBlock Text="Назад" Style="{DynamicResource NormalText}" Width="61" Height="25"/>
+                <TextBlock Text="Назад" Style="{DynamicResource NormalText2}" Width="61" Height="25"/>
             </StackPanel>
         </Button>
     </Grid>

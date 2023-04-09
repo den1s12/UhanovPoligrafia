@@ -16,7 +16,7 @@ namespace Uhanov.DataFolder
     {
         public int IdOrder { get; set; }
         public int IdPosition { get; set; }
-        public int CountExemplar { get; set; }
+        public string CountExemplar { get; set; }
         public decimal TotalPrice { get; set; }
         public int IdEmployee { get; set; }
         public System.DateTime OrderDate { get; set; }

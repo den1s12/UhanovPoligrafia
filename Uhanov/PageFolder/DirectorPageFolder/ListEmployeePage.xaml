@@ -1,0 +1,76 @@
+﻿<Page x:Class="Uhanov.PageFolder.DirectorPageFolder.ListEmployeePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Uhanov.PageFolder.DirectorPageFolder"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListEmployeePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <TextBox x:Name="SearchTb"
+                 Text="Поиск"
+                 TextChanged="SearchTb_TextChanged"
+                 Style="{DynamicResource SearchTb}"/>
+
+        <DataGrid x:Name="ListEmployeeDG"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  ScrollViewer.CanContentScroll="True"
+                  Grid.Row="1"
+                  MouseDoubleClick="ListEmployeeDG_MouseDoubleClick">
+            <DataGrid.ContextMenu>
+                <ContextMenu Name="BookCM">
+                    <MenuItem Header="Редактирование" x:Name="EditM" Click="EditM_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Удалить" x:Name="DeleteM" Click="DeleteM_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="dgTcIdEmployee"
+                                    Header="№ п/п"
+                                    Width="150"
+                                    Binding="{Binding IdEmployee}"/>
+
+                <DataGridTextColumn x:Name="dgTcLastNameEmployee"
+                                    Header="Фамилия"
+                                    Width="200"
+                                    Binding="{Binding LastNameEmployee}"/>
+                
+                <DataGridTextColumn x:Name="dgTcFirstNameEmployee"
+                                    Header="Имя"
+                                    Width="200"
+                                    Binding="{Binding FirstNameEmployee}"/>
+                
+                <DataGridTextColumn x:Name="dgTcMiddleNameEmployee"
+                                    Header="Отчество"
+                                    Width="200"
+                                    Binding="{Binding MiddleNameEmployee}"/>
+                
+                <DataGridTextColumn x:Name="dgTcPhoneNumberEmployee"
+                                    Header="Телефон"
+                                    Width="200"
+                                    Binding="{Binding PhoneNumberEmployee}"/>
+                
+                <DataGridTextColumn x:Name="dgTcEmailEmployee"
+                                    Header="Почта"
+                                    Width="200"
+                                    Binding="{Binding EmailEmployee}"/>
+                
+                <DataGridTextColumn x:Name="dgTcNamePost"
+                                    Header="Должность"
+                                    Width="200"
+                                    Binding="{Binding Post.NamePost}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</Page>

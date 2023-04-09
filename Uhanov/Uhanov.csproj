@@ -125,11 +125,29 @@
     <Compile Include="PageFolder\AdminPageFolder\UserListPage.xaml.cs">
       <DependentUpon>UserListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\AddEmployeePage.xaml.cs">
+      <DependentUpon>AddEmployeePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\EditEmployeePage.xaml.cs">
+      <DependentUpon>EditEmployeePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\DirectorPageFolder\ListEmployeePage.xaml.cs">
+      <DependentUpon>ListEmployeePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\AddClientPage.xaml.cs">
+      <DependentUpon>AddClientPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\AddOrderPage.xaml.cs">
       <DependentUpon>AddOrderPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\EditClientPage.xaml.cs">
+      <DependentUpon>EditClientPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\EditOrderPage.xaml.cs">
       <DependentUpon>EditOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\ManagerPageFolder\ListClientPage.xaml.cs">
+      <DependentUpon>ListClientPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\ManagerPageFolder\ListOrderPage.xaml.cs">
       <DependentUpon>ListOrderPage.xaml</DependentUpon>
@@ -139,6 +157,9 @@
     </Compile>
     <Compile Include="WindowFolder\AuthorizationWindow.xaml.cs">
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowFolder\DirectorFolder\DirectorWindow.xaml.cs">
+      <DependentUpon>DirectorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowFolder\ManagerFolder\ManagerWindow.xaml.cs">
       <DependentUpon>ManagerWindow.xaml</DependentUpon>
@@ -194,11 +215,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageFolder\DirectorPageFolder\AddEmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\DirectorPageFolder\EditEmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\DirectorPageFolder\ListEmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\AddClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\ManagerPageFolder\AddOrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageFolder\ManagerPageFolder\EditClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\ManagerPageFolder\EditOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\ManagerPageFolder\ListClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -215,6 +260,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowFolder\AuthorizationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowFolder\DirectorFolder\DirectorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -248,6 +297,10 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="ResourceFolder\ImageFolder\DirectorLogo.png" />
+    <Resource Include="ResourceFolder\ImageFolder\ManagerLogo.png" />
+    <Resource Include="ResourceFolder\ImageFolder\AdminLogo.png" />
+    <Resource Include="ResourceFolder\ImageFolder\background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

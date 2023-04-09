@@ -35,7 +35,7 @@
           </Key>
           <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdPosition" Type="int" Nullable="false" />
-          <Property Name="CountExemplar" Type="int" Nullable="false" />
+          <Property Name="CountExemplar" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="TotalPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="IdEmployee" Type="int" Nullable="false" />
           <Property Name="OrderDate" Type="date" Nullable="false" />
@@ -262,7 +262,7 @@
           </Key>
           <Property Name="IdOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdPosition" Type="Int32" Nullable="false" />
-          <Property Name="CountExemplar" Type="Int32" Nullable="false" />
+          <Property Name="CountExemplar" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TotalPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="IdEmployee" Type="Int32" Nullable="false" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />

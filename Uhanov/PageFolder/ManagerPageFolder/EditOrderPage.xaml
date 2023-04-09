@@ -5,10 +5,131 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Uhanov.PageFolder.ManagerPageFolder"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="900"
       Title="EditOrderPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Клиент" Grid.Column="1"
+               Grid.Row="1" Style="{DynamicResource NormalLabel}"/>
+        <ComboBox x:Name="ClientCB"
+                 Grid.Row="1" Grid.Column="2"
+                     SelectedItem="{Binding Client}"
+                          DisplayMemberPath="LastNameClient"
+                          SelectedValuePath="IdClient"
+                  HorizontalContentAlignment="Left"
+                  Width="280" Height="50"/>
+
+        <Label Content="Сотрудник" Grid.Column="1"
+               Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
+        <ComboBox x:Name="ManagerCB"
+                 Grid.Row="3" Grid.Column="2"
+                     SelectedItem="{Binding Employee}"
+                          DisplayMemberPath="LastNameEmployee"
+                          SelectedValuePath="IdEmployee"
+                  HorizontalContentAlignment="Left"
+                  Width="280" Height="50"/>
+
+        <Label Content="Продукция" Grid.Column="1"
+               Grid.Row="5" Style="{DynamicResource NormalLabel}"/>
+        <ComboBox x:Name="PositionCB"
+                 Grid.Row="5" Grid.Column="2"
+                     SelectedItem="{Binding PriceList}"
+                          DisplayMemberPath="NamePosition"
+                          SelectedValuePath="IdPosition"
+                  HorizontalContentAlignment="Left"
+                  Width="260" Height="50"/>
+
+        <Label Content="Количество" Grid.Column="1"
+               Grid.Row="7" Style="{DynamicResource NormalLabel}"/>
+        <TextBox x:Name="CountTB"
+                 Grid.Row="7" Grid.Column="2"
+                 Style="{DynamicResource TextBox2}"/>
+
+        <Label Content="Итоговая стоимость" Grid.Column="1"
+               Grid.Row="9" Style="{DynamicResource NormalLabel}"/>
+        <TextBox x:Name="TotalPriceTB"
+                 Grid.Row="9" Grid.Column="2"
+                 Style="{DynamicResource TextBox2}"/>
+
+
+        <Label Content="Дата заказа" Grid.Column="4"
+               Grid.Row="1" Style="{DynamicResource NormalLabel}"/>
+        <DatePicker x:Name="OrderDateTB"
+                 Grid.Row="1" Grid.Column="5"
+                 Style="{DynamicResource textBox}"/>
+
+        <Label Content="Статус заказа" Grid.Column="4"
+               Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
+        <ComboBox x:Name="OrderStatusCB"
+                 Grid.Row="3" Grid.Column="5"
+                     SelectedItem="{Binding Employee}"
+                          DisplayMemberPath="LastNameEmployee"
+                          SelectedValuePath="IdEmployee"
+                  HorizontalContentAlignment="Left"
+                  Width="280" Height="50"/>
+
+        <Label Content="Статус оплаты" Grid.Column="4"
+               Grid.Row="5" Style="{DynamicResource NormalLabel}"/>
+        <ComboBox x:Name="PaymentStatusCB"
+                 Grid.Row="5" Grid.Column="5"
+                     SelectedItem="{Binding Employee}"
+                          DisplayMemberPath="LastNameEmployee"
+                          SelectedValuePath="IdEmployee"
+                  HorizontalContentAlignment="Left"
+                  Width="280" Height="50"/>
+
+        <Label Content="Дата выдачи" Grid.Column="4"
+               Grid.Row="7" Style="{DynamicResource NormalLabel}"/>
+        <DatePicker x:Name="IssueDateTB"
+                 Grid.Row="7" Grid.Column="5"
+                 Style="{DynamicResource textBox}"/>
+
+        <Button x:Name="EditOrderBtn"
+                Click="EditOrderBtn_Click"
+                Width="270"
+                Grid.Column="5" Grid.Row="11"
+                Style="{DynamicResource menuButton2}"
+                HorizontalAlignment="Center">
+
+            <StackPanel Orientation="Horizontal" Width="201" Height="37">
+                <TextBlock Text="Изменить заказ" Style="{DynamicResource NormalText2}" Height="23" Width="199"/>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="BackBtn"
+                Click="BackBtn_Click"
+                Width="120"
+                Grid.Column="1" Grid.Row="11"
+                Style="{DynamicResource menuButton2}"
+                HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Width="60" Height="37">
+                <TextBlock Text="Назад" Style="{DynamicResource NormalText2}" Width="61" Height="25"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </Page>

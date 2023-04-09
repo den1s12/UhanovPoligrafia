@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Uhanov.ClassFolder;
+using Uhanov.DataFolder;
 
 namespace Uhanov.WindowFolder
 {
@@ -35,43 +37,89 @@ namespace Uhanov.WindowFolder
                 this.DragMove();
         }
 
-        private void textLogin_MouseDown(object sender, MouseButtonEventArgs e)
+        private void LogInBtn_Click(object sender, RoutedEventArgs e)
         {
-            txtLogin.Focus();
+            if (string.IsNullOrWhiteSpace(LoginTb.Text))
+            {
+                MBClass.ErrorMB("Введите логин");
+                LoginTb.Focus();
+            }
+
+            if (string.IsNullOrWhiteSpace(PasswordPsb.Password))
+            {
+                MBClass.ErrorMB("Введите пароль");
+                PasswordPsb.Focus();
+            }
+            else
+            {
+                try
+                {
+                    var user = DBEntities.GetContext()
+                        .User.FirstOrDefault(u => u.LoginUser == LoginTb.Text);
+
+                    if (user == null)
+                    {
+                        MBClass.ErrorMB("Введен не верный логин");
+                        LoginTb.Focus();
+                        return;
+                    }
+
+                    if (user.PasswordUser != PasswordPsb.Password)
+                    {
+                        MBClass.ErrorMB("Введен не верный пароль");
+                        PasswordPsb.Focus();
+                        return;
+                    }
+                    else
+                    {
+                        switch (user.IdRole)
+                        {
+                            case 1:
+                                new AdminFolder.AdminWindow().ShowDialog();
+                                break;
+
+                            case 2:
+                                new ManagerFolder.ManagerWindow().ShowDialog();
+                                break;
+
+                            case 3:
+                                new DirectorFolder.DirectorWindow().ShowDialog();
+                                break;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MBClass.ErrorMB(ex);
+                }
+            }
         }
 
-        private void txtLogin_TextChanged(object sender, TextChangedEventArgs e)
+        private void textLogin_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtLogin.Text) && txtLogin.Text.Length > 0)
+            LoginTb.Focus();
+        }
+
+        private void textPassword_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            PasswordPsb.Focus();
+
+        }
+
+        private void LoginTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(LoginTb.Text) && LoginTb.Text.Length > 0)
                 textLogin.Visibility = Visibility.Collapsed;
             else
                 textLogin.Visibility = Visibility.Visible;
         }
 
-        private void textPassword_MouseDown(object sender, MouseButtonEventArgs e)
+        private void PasswordPsb_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            passwordBox.Focus();
-        }
-
-        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(passwordBox.Password) && passwordBox.Password.Length > 0)
+            if (!string.IsNullOrEmpty(PasswordPsb.Password) && PasswordPsb.Password.Length > 0)
                 textPassword.Visibility = Visibility.Collapsed;
             else
                 textPassword.Visibility = Visibility.Visible;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtLogin.Text) && !string.IsNullOrEmpty(passwordBox.Password))
-            {
-                MessageBox.Show("Successfully Signed In");
-            }
-        }
-
-        private void RegBtn_Click(object sender, RoutedEventArgs e)
-        {
-            new RegistrationWindow().ShowDialog();
         }
     }
 }

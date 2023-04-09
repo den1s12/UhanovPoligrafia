@@ -42,5 +42,15 @@ namespace Uhanov.WindowFolder.ManagerFolder
         {
             MBClass.ExitMB();
         }
+
+        private void ListClientBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerFrame.Navigate(new ListClientPage());
+        }
+
+        private void AddClientBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -42,7 +42,7 @@
                           DisplayMemberPath="LastNameClient"
                           SelectedValuePath="IdClient"
                   HorizontalContentAlignment="Left"
-                  Width="280" Height="50"/>
+                  Width="260" Height="50"/>
 
         <Label Content="Сотрудник" Grid.Column="1"
                Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
@@ -52,13 +52,17 @@
                           DisplayMemberPath="LastNameEmployee"
                           SelectedValuePath="IdEmployee"
                   HorizontalContentAlignment="Left"
-                  Width="280" Height="50"/>
+                  Width="260" Height="50"/>
 
         <Label Content="Продукция" Grid.Column="1"
                Grid.Row="5" Style="{DynamicResource NormalLabel}"/>
-        <TextBox x:Name="PozitionTB"
+        <ComboBox x:Name="PositionCB"
                  Grid.Row="5" Grid.Column="2"
-                 Style="{DynamicResource TextBox2}"/>
+                     SelectedItem="{Binding PriceList}"
+                          DisplayMemberPath="NamePosition"
+                          SelectedValuePath="IdPosition"
+                  HorizontalContentAlignment="Left"
+                  Width="260" Height="50"/>
 
         <Label Content="Количество" Grid.Column="1"
                Grid.Row="7" Style="{DynamicResource NormalLabel}"/>
@@ -83,21 +87,21 @@
                Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
         <ComboBox x:Name="OrderStatusCB"
                  Grid.Row="3" Grid.Column="5"
-                     SelectedItem="{Binding Employee}"
-                          DisplayMemberPath="LastNameEmployee"
-                          SelectedValuePath="IdEmployee"
+                     SelectedItem="{Binding StatusOrder}"
+                          DisplayMemberPath="NameStatusOrder"
+                          SelectedValuePath="IdStatusOrder"
                   HorizontalContentAlignment="Left"
-                  Width="280" Height="50"/>
+                  Width="260" Height="50"/>
 
         <Label Content="Статус оплаты" Grid.Column="4"
                Grid.Row="5" Style="{DynamicResource NormalLabel}"/>
         <ComboBox x:Name="PaymentStatusCB"
                  Grid.Row="5" Grid.Column="5"
-                     SelectedItem="{Binding Employee}"
-                          DisplayMemberPath="LastNameEmployee"
-                          SelectedValuePath="IdEmployee"
+                     SelectedItem="{Binding StatusPayment}"
+                          DisplayMemberPath="NameStatusPayment"
+                          SelectedValuePath="IdStatusPayment"
                   HorizontalContentAlignment="Left"
-                  Width="280" Height="50"/>
+                  Width="260" Height="50"/>
 
         <Label Content="Дата выдачи" Grid.Column="4"
                Grid.Row="7" Style="{DynamicResource NormalLabel}"/>
@@ -105,15 +109,15 @@
                  Grid.Row="7" Grid.Column="5"
                  Style="{DynamicResource textBox}"/>
         
-        <Button x:Name="AddUserBtn"
-                Click="AddUserBtn_Click"
+        <Button x:Name="AddOrderBtn"
+                Click="AddOrderBtn_Click"
                 Width="270"
                 Grid.Column="5" Grid.Row="11"
                 Style="{DynamicResource menuButton2}"
                 HorizontalAlignment="Center">
 
             <StackPanel Orientation="Horizontal" Width="201" Height="37">
-                <TextBlock Text="Добавить пользователя" Style="{DynamicResource NormalText}" Height="23" Width="199"/>
+                <TextBlock Text="Создать заказ" Style="{DynamicResource NormalText2}" Height="23" Width="199"/>
             </StackPanel>
         </Button>
         
@@ -124,7 +128,7 @@
                 Style="{DynamicResource menuButton2}"
                 HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Width="60" Height="37">
-                <TextBlock Text="Назад" Style="{DynamicResource NormalText}" Width="61" Height="25"/>
+                <TextBlock Text="Назад" Style="{DynamicResource NormalText2}" Width="61" Height="25"/>
             </StackPanel>
         </Button>
     </Grid>

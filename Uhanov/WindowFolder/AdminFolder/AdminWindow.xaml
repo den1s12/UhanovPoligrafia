@@ -36,6 +36,12 @@
                         <GradientStop Color="#1c3b4f" Offset="1" />
                     </LinearGradientBrush>
                 </Border.Background>
+                <StackPanel Width="220" Grid.ColumnSpan="2" Grid.Row="1" Margin="5,10,5,508">
+                    <Image Source="C:\Users\PC\source\repos\Uhanov\Uhanov\ResourceFolder\ImageFolder\AdminLogo.png"
+                           Style="{DynamicResource Image}" Margin="5 20 0 0"/>
+                    <TextBlock Text="Администратор"
+                           Style="{DynamicResource TitleText}" Height="40" Margin="0 15 0 0"/>
+                </StackPanel>
             </Border>
 
             <StackPanel Width="220" Grid.ColumnSpan="2" Grid.Row="3">
@@ -43,7 +49,7 @@
 
                 <Button x:Name="ListUserBtn"
                         Style="{StaticResource menuButton}"
-                        Margin="0,0,0,10"
+                        Margin="0,50,0,10"
                         Click="ListUserBtn_Click">
                     <StackPanel Orientation="Horizontal" Width="190">
                         <TextBlock Text="Список пользователей" Style="{DynamicResource NormalText}"/>
@@ -61,7 +67,7 @@
 
                 <Button x:Name="ExitBtn"
                         Style="{StaticResource menuButton}"
-                        Margin="0,370,0,0"
+                        Margin="0,320,0,0"
                         Click="ExitBtn_Click">
                     <StackPanel Orientation="Horizontal" Width="190">
                         <TextBlock Text="Выйти" Style="{DynamicResource NormalText}" Width="176"/>
@@ -70,14 +76,7 @@
             </StackPanel>
 
             <!--MainWindow-->
-
-            <StackPanel Grid.Column="2" Grid.Row="1" 
-                        HorizontalAlignment="Center" Margin="0,0,0,60" Width="420">
-
-                <TextBlock Text="Окно администратора"
-                           Style="{DynamicResource TitleText}" Height="60"/>
-            </StackPanel>
-
+            
             <Grid Grid.Column="2" Grid.RowSpan="4">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>

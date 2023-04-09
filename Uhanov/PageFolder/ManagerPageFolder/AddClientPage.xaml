@@ -1,0 +1,92 @@
+﻿<Page x:Class="Uhanov.PageFolder.ManagerPageFolder.AddClientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Uhanov.PageFolder.ManagerPageFolder"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="AddClientPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Фамилия" Grid.Column="1"
+               Grid.Row="1" Style="{DynamicResource NormalLabel}"/>
+        <TextBox x:Name="LastNameTB"
+                 Grid.Row="1" Grid.Column="2"
+                 Style="{DynamicResource TextBox2}"/>
+
+        <Label Content="Имя" Grid.Column="1"
+               Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
+        <TextBox x:Name="FirstNameTB"
+                 Grid.Row="3" Grid.Column="2"
+                 Style="{DynamicResource TextBox2}"/>
+
+        <Label Content="Отчество" Grid.Column="1"
+               Grid.Row="5" Style="{DynamicResource NormalLabel}"/>
+        <TextBox x:Name="MiddleNameTB"
+                 Grid.Row="5" Grid.Column="2"
+                 Style="{DynamicResource TextBox2}"/>
+
+        <Label Content="Компания" Grid.Column="4"
+               Grid.Row="1" Style="{DynamicResource NormalLabel}"/>
+        <TextBox x:Name="NameCompanyTB"
+                 Grid.Row="1" Grid.Column="5"
+                 Style="{DynamicResource TextBox2}"/>
+
+        <Label Content="Телефон" Grid.Column="4"
+               Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
+        <TextBox x:Name="PhoneNumberTB"
+                 Grid.Row="3" Grid.Column="5"
+                 Style="{DynamicResource TextBox2}"/>
+
+        <Label Content="Почта" Grid.Column="4"
+               Grid.Row="5" Style="{DynamicResource NormalLabel}"/>
+        <TextBox x:Name="EmailTB"
+                 Grid.Row="5" Grid.Column="5"
+                 Style="{DynamicResource TextBox2}"/>
+
+        <Button x:Name="AddClientBtn"
+                Click="AddClientBtn_Click"
+                Width="270"
+                Grid.Column="5" Grid.Row="11"
+                Style="{DynamicResource menuButton2}"
+                HorizontalAlignment="Center">
+
+            <StackPanel Orientation="Horizontal" Width="201" Height="37">
+                <TextBlock Text="Добавить клиента" Style="{DynamicResource NormalText2}" Height="23" Width="199"/>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="BackBtn"
+                Click="BackBtn_Click"
+                Width="120"
+                Grid.Column="1" Grid.Row="11"
+                Style="{DynamicResource menuButton2}"
+                HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Width="60" Height="37">
+                <TextBlock Text="Назад" Style="{DynamicResource NormalText2}" Width="61" Height="25"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Page>
