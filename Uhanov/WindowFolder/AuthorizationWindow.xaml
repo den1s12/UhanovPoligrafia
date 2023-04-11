@@ -30,7 +30,10 @@
         </Border>
 
         <Border Background="#FFFFFF" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" Height="336">
+                <Image Source="C:\Users\PC\source\repos\Uhanov\Uhanov\ResourceFolder\ImageFolder\Logo2.jpg"
+                       Width="170" Height="80"/>
+                <TextBlock Margin="0 0 0 0" Foreground="#878787"/>
                 <TextBlock Text="Авторизация" Foreground="#09487a" Style="{StaticResource TitleText}" />
                 <TextBlock Margin="0 10 0 15" Foreground="#878787"/>
 

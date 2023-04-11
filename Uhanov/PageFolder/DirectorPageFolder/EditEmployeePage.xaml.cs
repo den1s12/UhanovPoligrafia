@@ -23,9 +23,12 @@ namespace Uhanov.PageFolder.DirectorPageFolder
     /// </summary>
     public partial class EditEmployeePage : Page
     {
-        public EditEmployeePage()
+        public EditEmployeePage(Employee employee)
         {
             InitializeComponent();
+            DataContext = employee;
+            PostCB.ItemsSource = DBEntities.GetContext()
+                .Post.ToList();
         }
 
         private void EditEmployeeBtn_Click(object sender, RoutedEventArgs e)

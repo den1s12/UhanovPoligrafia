@@ -25,9 +25,10 @@ namespace Uhanov.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class EditOrderPage : Page
     {
-        public EditOrderPage()
+        public EditOrderPage(Order order)
         {
             InitializeComponent();
+            DataContext = order;
             ClientCB.ItemsSource = DBEntities.GetContext().Client.ToList();
             ManagerCB.ItemsSource = DBEntities.GetContext().Employee.ToList();
             OrderStatusCB.ItemsSource = DBEntities.GetContext().StatusOrder.ToList();

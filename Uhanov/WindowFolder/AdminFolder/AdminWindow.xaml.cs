@@ -34,12 +34,17 @@ namespace Uhanov.WindowFolder.AdminFolder
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-            MBClass.ExitMB();
+            this.Close();
         }
 
         private void ListUserBtn_Click(object sender, RoutedEventArgs e)
         {
             AdminFrame.Navigate(new UserListPage());
+        }
+
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MBClass.ExitMB();
         }
     }
 }

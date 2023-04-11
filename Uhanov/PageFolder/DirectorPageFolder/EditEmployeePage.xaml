@@ -34,31 +34,36 @@
                Grid.Row="1" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="LastNameTB"
                  Grid.Row="1" Grid.Column="2"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding LastNameEmployee}"/>
 
         <Label Content="Имя" Grid.Column="1"
                Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="FirstNameTB"
                  Grid.Row="3" Grid.Column="2"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding FirstNameEmployee}"/>
 
         <Label Content="Отчество" Grid.Column="1"
                Grid.Row="5" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="MiddleNameTB"
                  Grid.Row="5" Grid.Column="2"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding MiddleNameEmployee}"/>
 
         <Label Content="Телефон" Grid.Column="4"
                Grid.Row="1" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="PhoneNumberTB"
                  Grid.Row="1" Grid.Column="5"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding PhoneNumberEmployee}"/>
 
         <Label Content="Почта" Grid.Column="4"
                Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="EmailTB"
                  Grid.Row="3" Grid.Column="5"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding EmailEmployee}"/>
 
         <Label Content="Должность" Grid.Column="4"
                Grid.Row="5" Style="{DynamicResource NormalLabel}"/>

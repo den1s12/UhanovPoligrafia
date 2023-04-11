@@ -22,9 +22,10 @@ namespace Uhanov.PageFolder.ManagerPageFolder
     /// </summary>
     public partial class EditClientPage : Page
     {
-        public EditClientPage()
+        public EditClientPage(Client client)
         {
             InitializeComponent();
+            DataContext = client;
         }
 
         private void EditClientBtn_Click(object sender, RoutedEventArgs e)

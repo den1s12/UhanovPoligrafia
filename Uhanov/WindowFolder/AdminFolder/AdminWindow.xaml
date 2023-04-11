@@ -70,7 +70,8 @@
                         Margin="0,320,0,0"
                         Click="ExitBtn_Click">
                     <StackPanel Orientation="Horizontal" Width="190">
-                        <TextBlock Text="Выйти" Style="{DynamicResource NormalText}" Width="176"/>
+                        <TextBlock Text="Сменить пользователя" Style="{DynamicResource NormalText}"
+                                   Width="176"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -85,6 +86,8 @@
                 <Label Style="{DynamicResource NormalLabel}"
                            Content="{Binding ElementName=MainFrame,
                         Path=Content.Title}"/>
+                <Image Source="C:\Users\PC\source\repos\Uhanov\Uhanov\ResourceFolder\ImageFolder\close.png" 
+                       Grid.Column="1" Panel.ZIndex="1" MouseUp="Image_MouseUp" Style="{StaticResource imgClose}"/>
                 <Frame Grid.Row="1" Name="AdminFrame" Margin="10"
                            NavigationUIVisibility="Hidden"/>
 

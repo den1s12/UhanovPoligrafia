@@ -30,13 +30,16 @@
                Grid.Row="1" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="LoginTB"
                  Grid.Row="1" Grid.Column="2"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding LoginUser}"/>
 
         <Label Content="Пароль" Grid.Column="1"
                Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
-        <PasswordBox x:Name="PasswordPsb"
+        
+        <TextBox x:Name="PasswordPsb"
                  Grid.Row="3" Grid.Column="2"
-                     Style="{DynamicResource PasswordBox}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding PasswordUser}"/>
 
         <Label Content="Роль" Grid.Column="1"
                Grid.Row="5" Style="{DynamicResource NormalLabel}"/>

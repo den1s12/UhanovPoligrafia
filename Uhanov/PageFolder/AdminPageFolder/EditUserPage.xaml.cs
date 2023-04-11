@@ -35,7 +35,7 @@ namespace Uhanov.PageFolder.AdminPageFolder
             User user = DBEntities.GetContext().User.
                          FirstOrDefault(s => s.IdUser == VariableClass.UserId);
             user.LoginUser = LoginTB.Text;
-            user.PasswordUser = PasswordPsb.Password;
+            user.PasswordUser = PasswordPsb.Text;
             user.IdRole = Int32.Parse(RoleCB.SelectedValue.ToString());
             DBEntities.GetContext().SaveChanges();
             MBClass.InfoMB("Пользователь успешно отредактирован");

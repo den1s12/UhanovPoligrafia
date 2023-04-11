@@ -297,6 +297,9 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="ResourceFolder\ImageFolder\Logo1.png" />
+    <Resource Include="ResourceFolder\ImageFolder\Logo2.jpg" />
+    <Resource Include="Image1.png" />
     <Resource Include="ResourceFolder\ImageFolder\DirectorLogo.png" />
     <Resource Include="ResourceFolder\ImageFolder\ManagerLogo.png" />
     <Resource Include="ResourceFolder\ImageFolder\AdminLogo.png" />

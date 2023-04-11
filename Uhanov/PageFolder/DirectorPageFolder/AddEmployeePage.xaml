@@ -78,7 +78,7 @@
                 HorizontalAlignment="Center">
 
             <StackPanel Orientation="Horizontal" Width="201" Height="37">
-                <TextBlock Text="Изменить клиента" Style="{DynamicResource NormalText2}" Height="23" Width="199"/>
+                <TextBlock Text="Добавить сотрудника" Style="{DynamicResource NormalText2}" Height="23" Width="199"/>
             </StackPanel>
         </Button>
 

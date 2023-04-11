@@ -33,37 +33,43 @@
                Grid.Row="1" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="LastNameTB"
                  Grid.Row="1" Grid.Column="2"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding LastNameClient}"/>
 
         <Label Content="Имя" Grid.Column="1"
                Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="FirstNameTB"
                  Grid.Row="3" Grid.Column="2"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding FirstNameClient}"/>
 
         <Label Content="Отчество" Grid.Column="1"
                Grid.Row="5" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="MiddleNameTB"
                  Grid.Row="5" Grid.Column="2"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding MiddleNameClient}"/>
 
         <Label Content="Компания" Grid.Column="4"
                Grid.Row="1" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="NameCompanyTB"
                  Grid.Row="1" Grid.Column="5"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding NameCompany}"/>
 
         <Label Content="Телефон" Grid.Column="4"
                Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="PhoneNumberTB"
                  Grid.Row="3" Grid.Column="5"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding PhoneNumberClient}"/>
 
         <Label Content="Почта" Grid.Column="4"
                Grid.Row="5" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="EmailTB"
                  Grid.Row="5" Grid.Column="5"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding EmailClient}"/>
 
         <Button x:Name="EditClientBtn"
                 Click="EditClientBtn_Click"

@@ -40,7 +40,7 @@ namespace Uhanov.WindowFolder.ManagerFolder
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-            MBClass.ExitMB();
+            this.Close();
         }
 
         private void ListClientBtn_Click(object sender, RoutedEventArgs e)
@@ -50,7 +50,12 @@ namespace Uhanov.WindowFolder.ManagerFolder
 
         private void AddClientBtn_Click(object sender, RoutedEventArgs e)
         {
+            ManagerFrame.Navigate(new AddClientPage());
+        }
 
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MBClass.ExitMB();
         }
     }
 }

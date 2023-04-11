@@ -46,6 +46,11 @@ namespace Uhanov.WindowFolder.DirectorFolder
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
             MBClass.ExitMB();
         }
     }

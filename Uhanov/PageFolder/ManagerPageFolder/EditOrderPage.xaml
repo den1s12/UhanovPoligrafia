@@ -42,7 +42,7 @@
                           DisplayMemberPath="LastNameClient"
                           SelectedValuePath="IdClient"
                   HorizontalContentAlignment="Left"
-                  Width="280" Height="50"/>
+                  Width="260" Height="50"/>
 
         <Label Content="Сотрудник" Grid.Column="1"
                Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
@@ -52,7 +52,7 @@
                           DisplayMemberPath="LastNameEmployee"
                           SelectedValuePath="IdEmployee"
                   HorizontalContentAlignment="Left"
-                  Width="280" Height="50"/>
+                  Width="260" Height="50"/>
 
         <Label Content="Продукция" Grid.Column="1"
                Grid.Row="5" Style="{DynamicResource NormalLabel}"/>
@@ -68,46 +68,50 @@
                Grid.Row="7" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="CountTB"
                  Grid.Row="7" Grid.Column="2"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding CountExemplar}"/>
 
         <Label Content="Итоговая стоимость" Grid.Column="1"
                Grid.Row="9" Style="{DynamicResource NormalLabel}"/>
         <TextBox x:Name="TotalPriceTB"
                  Grid.Row="9" Grid.Column="2"
-                 Style="{DynamicResource TextBox2}"/>
+                 Style="{DynamicResource TextBox2}"
+                 Text="{Binding TotalPrice}"/>
 
 
         <Label Content="Дата заказа" Grid.Column="4"
                Grid.Row="1" Style="{DynamicResource NormalLabel}"/>
         <DatePicker x:Name="OrderDateTB"
                  Grid.Row="1" Grid.Column="5"
-                 Style="{DynamicResource textBox}"/>
+                 Style="{DynamicResource textBox}"
+                    Text="{Binding OrderDate}"/>
 
         <Label Content="Статус заказа" Grid.Column="4"
                Grid.Row="3" Style="{DynamicResource NormalLabel}"/>
         <ComboBox x:Name="OrderStatusCB"
                  Grid.Row="3" Grid.Column="5"
-                     SelectedItem="{Binding Employee}"
-                          DisplayMemberPath="LastNameEmployee"
-                          SelectedValuePath="IdEmployee"
+                     SelectedItem="{Binding StatusOrder}"
+                          DisplayMemberPath="NameStatusOrder"
+                          SelectedValuePath="IdStatusOrder"
                   HorizontalContentAlignment="Left"
-                  Width="280" Height="50"/>
+                  Width="260" Height="50"/>
 
         <Label Content="Статус оплаты" Grid.Column="4"
                Grid.Row="5" Style="{DynamicResource NormalLabel}"/>
         <ComboBox x:Name="PaymentStatusCB"
                  Grid.Row="5" Grid.Column="5"
-                     SelectedItem="{Binding Employee}"
-                          DisplayMemberPath="LastNameEmployee"
-                          SelectedValuePath="IdEmployee"
+                     SelectedItem="{Binding StatusPayment}"
+                          DisplayMemberPath="NameStatusPayment"
+                          SelectedValuePath="IdStatusPayment"
                   HorizontalContentAlignment="Left"
-                  Width="280" Height="50"/>
+                  Width="260" Height="50"/>
 
         <Label Content="Дата выдачи" Grid.Column="4"
                Grid.Row="7" Style="{DynamicResource NormalLabel}"/>
         <DatePicker x:Name="IssueDateTB"
                  Grid.Row="7" Grid.Column="5"
-                 Style="{DynamicResource textBox}"/>
+                 Style="{DynamicResource textBox}"
+                    Text="{Binding DateOfIssueOrder}"/>
 
         <Button x:Name="EditOrderBtn"
                 Click="EditOrderBtn_Click"
